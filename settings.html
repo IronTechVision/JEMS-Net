@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - JEMS-Net{% endblock %}
+{% block content %}
+
+<h2>⚙ System Settings</h2>
+
+<div class="settings-grid" style="margin-top:15px;">
+
+  <div class="panel setting-card">
+    <h4>🔔 Notifications</h4>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+    <span>Enable alerts</span>
+  </div>
+
+  <div class="panel setting-card">
+    <h4>🛡 Auto-Block</h4>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+    <span>Block suspicious IPs</span>
+  </div>
+
+  <div class="panel setting-card">
+    <h4>📊 Data Logging</h4>
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    <span>Full packet capture</span>
+  </div>
+
+  <div class="panel setting-card">
+    <h4>🌐 Dark Mode</h4>
+    <label class="switch">
+      <input type="checkbox" checked disabled>
+      <span class="slider"></span>
+    </label>
+    <span>Always on</span>
+  </div>
+
+  <div class="panel setting-card">
+    <h4>🔄 Auto-Refresh</h4>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+    <span>Live dashboard updates</span>
+  </div>
+
+  <div class="panel setting-card">
+    <h4>🤖 AI Assistant</h4>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+    <span>Voice + Chat enabled</span>
+  </div>
+
+<div class="panel" style="margin-top:15px;">
+  <h4>📡 Refresh Interval</h4>
+  <input type="range" min="1" max="10" value="2" class="neon-range">
+  <span>2 seconds</span>
+</div>
+
+{% endblock %}

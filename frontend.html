@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JEMS-Net</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>⚡ JEMS-Net Dashboard</h1>
+
+<div class="container">
+
+    <div class="card">
+        <h2>📡 Network Data</h2>
+        <p id="network">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h2>🔗 Connections</h2>
+        <p id="connections">Loading...</p>
+    </div>
+
+    <div class="card">
+        <h2>🧠 AI Analysis</h2>
+        <p id="analysis">Thinking...</p>
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
+body {
+    background: #0a0a0a;
+    color: #00ffe1;
+    font-family: Arial;
+    text-align: center;
+}
+
+h1 {
+    text-shadow: 0 0 20px #00ffe1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #00ffe1;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 0 20px #00ffe1;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #00ffe1;
+}
+async function loadData() {
+
+    // Network Data
+    let net = await fetch('/network');
+    let netData = await net.json();
+
+    document.getElementById("network").innerText =
+        "Sent: " + netData.bytes_sent + " | Recv: " + netData.bytes_recv;
+
+    // Connections
+    let conn = await fetch('/connections');
+    let connData = await conn.json();
+
+    document.getElementById("connections").innerText =
+        connData.connections;
+
+    // AI Analysis
+    let ai = await fetch('/analysis');
+    let aiData = await ai.json();
+
+    document.getElementById("analysis").innerText =
+        aiData.analysis;
+}
+
+// Refresh every second
+setInterval(loadData, 1000);

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JEMS-Net Advanced</title>
+
+<link rel="stylesheet" href="/static/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<!-- GRID BACKGROUND -->
+<div class="grid-bg"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">⚡ JEMS-Net</div>
+
+  <nav class="menu">
+    <span class="active">Dashboard</span>
+    <span>Monitor</span>
+    <span>Analytics</span>
+    <span>Alerts</span>
+    <span>Reports</span>
+    <span>Settings</span>
+  </nav>
+
+  <div class="right">
+    <button id="voiceBtn">🎤 Talk to JEMS</button>
+    <span id="time"></span>
+    <span class="status">● ONLINE</span>
+    <span class="user">Admin</span>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div>🏠 Overview</div>
+  <div>📡 Network Monitor</div>
+  <div>🧠 AI Analytics</div>
+  <div>📊 Traffic Insights</div>
+  <div>⚠ Threat Detection</div>
+  <div>🖥 Device Management</div>
+  <div>⚙ Performance</div>
+  <div>📜 Logs</div>
+  <div>📁 Reports</div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- TOP CARDS -->
+<div class="top">
+  <div class="panel" id="net">Network Data</div>
+  <div class="panel" id="conn">Connections</div>
+  <div class="panel" id="ai">AI Insight</div>
+</div>
+
+<!-- CENTER -->
+<div class="center">
+
+  <!-- GRAPH -->
+  <div class="panel chart">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <!-- RADAR -->
+  <div class="radar">
+
+<svg viewBox="0 0 300 300">
+
+<defs>
+<filter id="glow">
+  <feGaussianBlur stdDeviation="3"/>
+</filter>
+</defs>
+
+<!-- rings -->
+<circle cx="150" cy="150" r="120" class="ring1"/>
+<circle cx="150" cy="150" r="90" class="ring2"/>
+<circle cx="150" cy="150" r="60" class="ring3"/>
+
+<!-- rotating line -->
+<line x1="150" y1="150" x2="260" y2="150" class="scan"/>
+
+<text x="150" y="160" text-anchor="middle" class="center-text">100%</text>
+
+</svg>
+
+  </div>
+
+</div>
+
+</main>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
+

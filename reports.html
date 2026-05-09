@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Reports - JEMS-Net{% endblock %}
+{% block content %}
+
+<h2>📁 Network Reports</h2>
+
+<div class="panel" style="margin-top:15px;">
+  <h3>📜 Daily Summary</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>Value</th><th>Change</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Total Data Transferred</td><td>45.2 GB</td><td class="ok">+12%</td></tr>
+      <tr><td>Avg Connection Count</td><td>142</td><td class="warn">-5%</td></tr>
+      <tr><td>Peak Bandwidth</td><td>850 Mbps</td><td class="ok">+8%</td></tr>
+      <tr><td>Blocked Threats</td><td>23</td><td class="ok">-15%</td></tr>
+      <tr><td>System Uptime</td><td>99.98%</td><td class="ok">+0.01%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="top" style="margin-top:15px;">
+  <div class="panel">
+    <h4>🕒 Top Active Hours</h4>
+    <p>10:00 - 12:00<br>14:00 - 16:00<br>20:00 - 22:00</p>
+  </div>
+  <div class="panel">
+    <h4>🌍 Top Regions</h4>
+    <p>US-East: 45%<br>EU-West: 30%<br>AP-South: 25%</p>
+  </div>
+  <div class="panel">
+    <h4>📦 Protocols</h4>
+    <p>HTTPS: 68%<br>HTTP: 15%<br>SSH: 10%<br>Other: 7%</p>
+  </div>
+
+{% endblock %}

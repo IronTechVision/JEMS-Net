@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}JEMS-Net{% endblock %}</title>
+<link rel="stylesheet" href="/static/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<canvas id="networkBG"></canvas>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="left">
+    <button id="toggleSidebar">☰</button>
+    <div class="logo">⚡ JEMS-Net</div>
+  </div>
+
+  <nav class="menu">
+    <a href="/dashboard" class="{% if active == 'dashboard' %}active{% endif %}">Dashboard</a>
+    <a href="/monitor" class="{% if active == 'monitor' %}active{% endif %}">Monitor</a>
+    <a href="/analytics" class="{% if active == 'analytics' %}active{% endif %}">Analytics</a>
+    <a href="/alerts" class="{% if active == 'alerts' %}active{% endif %}">Alerts</a>
+    <a href="/reports" class="{% if active == 'reports' %}active{% endif %}">Reports</a>
+    <a href="/settings" class="{% if active == 'settings' %}active{% endif %}">Settings</a>
+  </nav>
+
+  <div class="right">
+    <button id="voiceBtn">🎤 Talk to JEMS</button>
+    <span id="time"></span>
+    <span class="status">● ONLINE</span>
+    <span class="user">Admin</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <a href="/dashboard" class="{% if active == 'dashboard' %}active{% endif %}"><span class="icon">🏠</span><span class="text">Overview</span></a>
+  <a href="/monitor" class="{% if active == 'monitor' %}active{% endif %}"><span class="icon">📡</span><span class="text">Monitor</span></a>
+  <a href="/analytics" class="{% if active == 'analytics' %}active{% endif %}"><span class="icon">🧠</span><span class="text">AI</span></a>
+  <a href="/alerts" class="{% if active == 'alerts' %}active{% endif %}"><span class="icon">⚠</span><span class="text">Alerts</span></a>
+  <a href="/reports" class="{% if active == 'reports' %}active{% endif %}"><span class="icon">📜</span><span class="text">Logs</span></a>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+{% block content %}{% endblock %}
+</main>
+
+</div>
+
+<script src="/static/script.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>
+

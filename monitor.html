@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Monitor - JEMS-Net{% endblock %}
+{% block content %}
+
+<h2>🖥 Live Network Connections</h2>
+
+<div class="panel" style="margin-top:15px;">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Protocol</th>
+        <th>Local Address</th>
+        <th>Local Port</th>
+        <th>Remote Address</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="connTable">
+      <tr><td colspan="5">Loading...</td></tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+{% block extra_js %}
+<script>
+async function loadMonitor(){
+  let conns = await fetch('/connections-detail').then(r=>r.json());
+  let tbody = document.getElementById('connTable');
+  tbody.innerHTML = '';
+  conns.connections.forEach(c => {
+    let row = `<tr>
+      <td>${c.type}</td>
+      <td>${c.local_addr}</td>
+      <td>${c.local_port}</td>
+      <td>${c.remote_addr}</td>
+      <td><span class="badge ${c.status=='ESTABLISHED'?'ok':'warn'}">${c.status}</span></td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+}
+loadMonitor();
+setInterval(loadMonitor, 5000);
+</script>
+{% endblock %}

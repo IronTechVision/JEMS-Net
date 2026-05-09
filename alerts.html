@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Alerts - JEMS-Net{% endblock %}
+{% block content %}
+
+<h2>⚠ System Alerts</h2>
+
+<div class="alert-list" style="margin-top:15px;">
+
+  <div class="panel alert-critical">
+    <div class="alert-header">🔴 CRITICAL</div>
+    <div>High outbound traffic spike detected at 14:32 UTC</div>
+    <small>2 minutes ago</small>
+  </div>
+
+  <div class="panel alert-warning">
+    <div class="alert-header">🟠 WARNING</div>
+    <div>Unusual connection pattern from IP 192.168.1.45</div>
+    <small>15 minutes ago</small>
+  </div>
+
+  <div class="panel alert-info">
+    <div class="alert-header">🔵 INFO</div>
+    <div>System backup completed successfully</div>
+    <small>1 hour ago</small>
+  </div>
+
+  <div class="panel alert-ok">
+    <div class="alert-header">🟢 RESOLVED</div>
+    <div>DNS latency returned to normal levels</div>
+    <small>3 hours ago</small>
+  </div>
+
+{% endblock %}

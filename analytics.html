@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - JEMS-Net{% endblock %}
+{% block content %}
+
+<h2>📊 Network Analytics</h2>
+
+<div class="center" style="margin-top:15px;">
+  <div class="panel chart">
+    <canvas id="trafficChart"></canvas>
+  </div>
+  <div class="panel chart">
+    <canvas id="packetChart"></canvas>
+  </div>
+
+<div class="top" style="margin-top:15px;">
+  <div class="panel">📈 Peak Traffic: <b id="peak">--</b></div>
+  <div class="panel">📉 Avg Latency: <b id="latency">-- ms</b></div>
+  <div class="panel">🔄 Uptime: <b id="uptime">--</b></div>
+
+{% endblock %}
+{% block extra_js %}
+<script>
+const trafficCtx = document.getElementById('trafficChart');
+const packetCtx = document.getElementById('packetChart');
+
+new Chart(trafficCtx, {
+  type: 'bar',
+  data: {
+    labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    datasets: [{
+      label: 'Traffic (GB)',
+      data: [12, 19, 8, 15, 22, 10, 18],
+      backgroundColor: '#00f7ff88',
+      borderColor: '#00f7ff',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#00f7ff' } } },
+    scales: {
+      x: { ticks: { color: '#00f7ff88' }, grid: { color: '#00f7ff22' } },
+      y: { ticks: { color: '#00f7ff88' }, grid: { color: '#00f7ff22' } }
+    }
+  }
+});
+
+new Chart(packetCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['TCP','UDP','ICMP','Other'],
+    datasets: [{
+      data: [65, 25, 5, 5],
+      backgroundColor: ['#00f7ff','#ff00ff','#ffff00','#888888'],
+      borderColor: '#020d1a',
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#00f7ff' } } }
+  }
+});
+
+async function loadAnalytics(){
+  let n = await fetch('/network').then(r=>r.json());
+  document.getElementById('peak').innerText = Math.round(n.sent / 1e6) + ' MB';
+  document.getElementById('latency').innerText = Math.floor(Math.random() * 20 + 5) + ' ms';
+  let secs = Math.floor(psutil.uptime || 3600);
+  document.getElementById('uptime').innerText = Math.floor(secs/3600) + 'h ' + Math.floor((secs%3600)/60) + 'm';
+}
+loadAnalytics();
+setInterval(loadAnalytics, 5000);
+</script>
+{% endblock %}
