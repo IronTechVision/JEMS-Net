@@ -57,6 +57,27 @@ The system is designed to improve network visibility, automate monitoring proces
 - Real-time AI-driven defense analytics
 
 ---
+---
+
+## Project Preview
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Analytics
+![Analytics](Analytics.png)
+
+### Monitoring
+![Monitoring](Monitor.png)
+
+### Alerts
+![Alerts](Alert.png)
+
+### Reports
+![Reports](Report.png)
+
+### Settings
+![Settings](Setting.png)
 
 ## Author
 Aryan Kamble
